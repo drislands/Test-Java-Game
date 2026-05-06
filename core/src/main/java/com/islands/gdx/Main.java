@@ -5,8 +5,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.islands.gdx.things.Ball;
+import com.islands.gdx.things.Block;
 import com.islands.gdx.things.Paddle;
-import com.islands.gdx.things.Thing;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,12 +18,21 @@ public class Main extends ApplicationAdapter {
     ShapeRenderer shape;
     Ball ball;
     Paddle paddle;
+    List<Block> blocks = new ArrayList<>();
 
     @Override
     public void create() {
         shape = new ShapeRenderer();
         ball = new Ball(300,300,15,2,6);
         paddle = new Paddle(50,20,80,5);
+
+        int blockW = 63;
+        int blockH = 20;
+        for (int y = Gdx.graphics.getHeight()/2; y < Gdx.graphics.getHeight(); y += blockH + 10) {
+            for (int x = 0; x < Gdx.graphics.getWidth(); x += blockW + 10) {
+                blocks.add(new Block(x, y, blockW, blockH));
+            }
+        }
     }
 
     @Override
@@ -36,6 +45,10 @@ public class Main extends ApplicationAdapter {
         ball.draw(shape);
         paddle.update();
         paddle.draw(shape);
+
+        for(Block block : blocks) {
+            block.draw(shape);
+        }
 
         shape.end();
     }
