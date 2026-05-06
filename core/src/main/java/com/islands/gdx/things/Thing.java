@@ -16,8 +16,8 @@ public abstract class Thing {
     public abstract void draw(ShapeRenderer shape);
 
     public abstract int getTop();
-//    public abstract int getLeft();
-//    public abstract int getRight();
+    public abstract int getLeft();
+    public abstract int getRight();
     public abstract int getBottom();
 
     protected int invertY() {
@@ -25,5 +25,11 @@ public abstract class Thing {
         int height = Gdx.graphics.getHeight();
 
         return height - mouseY;
+    }
+
+    public boolean overlaps(Thing other) {
+        return getBottom() < other.getTop() && getTop() > other.getBottom()
+            &&
+            getRight() > other.getLeft() && getLeft() < other.getRight();
     }
 }

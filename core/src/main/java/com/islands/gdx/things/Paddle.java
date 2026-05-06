@@ -30,6 +30,16 @@ public class Paddle extends Thing {
     }
 
     @Override
+    public int getLeft() {
+        return x;
+    }
+
+    @Override
+    public int getRight() {
+        return x + w;
+    }
+
+    @Override
     public int getBottom() {
         return y;
     }

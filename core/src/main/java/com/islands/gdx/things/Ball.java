@@ -41,6 +41,16 @@ public class Ball extends Thing {
     }
 
     @Override
+    public int getLeft() {
+        return x - size;
+    }
+
+    @Override
+    public int getRight() {
+        return x + size;
+    }
+
+    @Override
     public int getBottom() {
         return y - size;
     }
@@ -54,6 +64,6 @@ public class Ball extends Thing {
     }
 
     private boolean collidesWith(Paddle paddle) {
-        return getBottom() < paddle.getTop();
+        return overlaps(paddle);
     }
 }
