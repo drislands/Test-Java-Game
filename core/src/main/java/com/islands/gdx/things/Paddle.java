@@ -15,7 +15,8 @@ public class Paddle extends Thing {
 
     @Override
     public void update() {
-        x = Gdx.input.getX();
+        x = Gdx.input.getX() - (w/2);
+        y = invertY()        - (h/2);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.islands.gdx.things;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public abstract class Thing {
@@ -13,4 +14,11 @@ public abstract class Thing {
 
     public abstract void update();
     public abstract void draw(ShapeRenderer shape);
+
+    protected int invertY() {
+        int mouseY = Gdx.input.getY();
+        int height = Gdx.graphics.getHeight();
+
+        return height - mouseY;
+    }
 }
