@@ -35,6 +35,16 @@ public class Ball extends Thing {
         shape.circle(x,y,size);
     }
 
+    @Override
+    public int getTop() {
+        return y + size;
+    }
+
+    @Override
+    public int getBottom() {
+        return y - size;
+    }
+
     public void checkCollision(Paddle paddle) {
         if(collidesWith(paddle)) {
             color = Color.GREEN;
@@ -44,6 +54,6 @@ public class Ball extends Thing {
     }
 
     private boolean collidesWith(Paddle paddle) {
-        return Math.random()>.5;
+        return getBottom() < paddle.getTop();
     }
 }

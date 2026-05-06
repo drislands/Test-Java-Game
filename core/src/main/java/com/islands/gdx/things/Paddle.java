@@ -23,4 +23,14 @@ public class Paddle extends Thing {
     public void draw(ShapeRenderer shape) {
         shape.rect(x,y,w,h);
     }
+
+    @Override
+    public int getTop() {
+        return y + h;
+    }
+
+    @Override
+    public int getBottom() {
+        return y;
+    }
 }

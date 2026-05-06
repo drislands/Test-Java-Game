@@ -15,6 +15,11 @@ public abstract class Thing {
     public abstract void update();
     public abstract void draw(ShapeRenderer shape);
 
+    public abstract int getTop();
+//    public abstract int getLeft();
+//    public abstract int getRight();
+    public abstract int getBottom();
+
     protected int invertY() {
         int mouseY = Gdx.input.getY();
         int height = Gdx.graphics.getHeight();
