@@ -22,8 +22,8 @@ public class Main extends ApplicationAdapter {
     @Override
     public void create() {
         shape = new ShapeRenderer();
-        ball = new Ball(300,300,15,0,0);
-        paddle = new Paddle(50,20,40,5);
+        ball = new Ball(300,300,15,2,6);
+        paddle = new Paddle(50,20,80,5);
     }
 
     @Override
