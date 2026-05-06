@@ -16,23 +16,27 @@ import java.util.List;
  */
 public class Main extends ApplicationAdapter {
     ShapeRenderer shape;
-    List<Thing> things = new ArrayList<>();
+    Ball ball;
+    Paddle paddle;
 
     @Override
     public void create() {
         shape = new ShapeRenderer();
-        things.add(new Ball(50,50,15,5,5));
-        things.add(new Paddle(50,20,40,5));
+        ball = new Ball(300,300,15,0,0);
+        paddle = new Paddle(50,20,40,5);
     }
 
     @Override
     public void render() {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         shape.begin(ShapeRenderer.ShapeType.Filled);
-        for(Thing thing : things) {
-            thing.update();
-            thing.draw(shape);
-        }
+
+        ball.checkCollision(paddle);
+        ball.update();
+        ball.draw(shape);
+        paddle.update();
+        paddle.draw(shape);
+
         shape.end();
     }
 }

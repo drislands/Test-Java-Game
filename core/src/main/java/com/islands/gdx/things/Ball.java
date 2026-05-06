@@ -1,12 +1,14 @@
 package com.islands.gdx.things;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class Ball extends Thing {
     int size;
     int xSpeed;
     int ySpeed;
+    Color color = Color.WHITE;
 
     public Ball(int x, int y, int size, int xSpeed, int ySpeed) {
         super(x,y);
@@ -29,6 +31,19 @@ public class Ball extends Thing {
 
     @Override
     public void draw(ShapeRenderer shape) {
+        shape.setColor(color);
         shape.circle(x,y,size);
+    }
+
+    public void checkCollision(Paddle paddle) {
+        if(collidesWith(paddle)) {
+            color = Color.GREEN;
+        } else {
+            color = Color.WHITE;
+        }
+    }
+
+    private boolean collidesWith(Paddle paddle) {
+        return Math.random()>.5;
     }
 }
