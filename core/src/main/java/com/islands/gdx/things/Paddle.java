@@ -1,0 +1,25 @@
+package com.islands.gdx.things;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+
+public class Paddle extends Thing {
+    int w;
+    int h;
+
+    public Paddle(int x, int y, int w, int h) {
+        super(x, y);
+        this.w = w;
+        this.h = h;
+    }
+
+    @Override
+    public void update() {
+        x = Gdx.input.getX();
+    }
+
+    @Override
+    public void draw(ShapeRenderer shape) {
+        shape.rect(x,y,w,h);
+    }
+}
