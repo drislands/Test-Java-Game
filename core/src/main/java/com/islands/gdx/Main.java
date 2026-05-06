@@ -23,7 +23,7 @@ public class Main extends ApplicationAdapter {
     @Override
     public void create() {
         shape = new ShapeRenderer();
-        ball = new Ball(300,300,15,2,6);
+        ball = new Ball(50,40,15,2,6);
         paddle = new Paddle(50,20,80,5);
 
         int blockW = 63;
@@ -48,7 +48,9 @@ public class Main extends ApplicationAdapter {
 
         for(Block block : blocks) {
             block.draw(shape);
+            ball.checkCollision(block);
         }
+        blocks.removeIf((b) -> b.destroyed);
 
         shape.end();
     }

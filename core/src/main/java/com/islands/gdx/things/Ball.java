@@ -53,12 +53,15 @@ public class Ball extends Thing {
     }
 
     public void checkCollision(Paddle paddle) {
-        if(collidesWith(paddle)) {
+        if(overlaps(paddle)) {
             ySpeed = -ySpeed;
         }
     }
 
-    private boolean collidesWith(Paddle paddle) {
-        return overlaps(paddle);
+    public void checkCollision(Block block) {
+        if(overlaps(block)) {
+            ySpeed = -ySpeed;
+            block.destroyed = true;
+        }
     }
 }
