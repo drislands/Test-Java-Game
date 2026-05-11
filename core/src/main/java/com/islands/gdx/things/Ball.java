@@ -8,6 +8,8 @@ public class Ball extends Thing {
     int xSpeed;
     int ySpeed;
 
+    int paddleImpactValue = 1;
+
     public Ball(int x, int y, int size, int xSpeed, int ySpeed) {
         super(x,y);
         this.size = size;
@@ -55,6 +57,10 @@ public class Ball extends Thing {
     public void checkCollision(Paddle paddle) {
         if(overlaps(paddle)) {
             ySpeed = -ySpeed;
+            switch(paddle.movingDirection()) {
+                case 1 -> xSpeed += paddleImpactValue;
+                case -1 -> xSpeed -= paddleImpactValue;
+            }
         }
     }
 
